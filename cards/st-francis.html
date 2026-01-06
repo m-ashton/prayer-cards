@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint Francis - Prayer Cards</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <!-- Front of card -->
+                    <div class="card-face card-front">
+                        <img src="../images/st-francis.jpg" alt="Saint Francis of Assissi by Antoniazzo Romano" class="card-image"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <h2 class="card-title" id="card-title">Saint Francis</h2>
+
+                        <!-- Info button -->
+                        <button class="info-btn" id="info-btn" onclick="toggleInfo(event)">i</button>
+
+                        <!-- Info popup -->
+                        <div class="info-popup" id="info-popup" onclick="toggleInfo(event)">
+                            <div class="info-content" onclick="event.stopPropagation()">
+                                <button class="info-close" onclick="toggleInfo(event)">✕</button>
+                                <p><strong>Saint Francis of Assisi</strong></p>
+                                <p>Painting by Antoniazzo Romano</p>
+                                <p><a href="https://www.metmuseum.org/art/collection/search/692597" target="_blank" rel="noopener">View Source</a></p>
+                                <p class="info-license">Public domain</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of card -->
+                    <div class="card-face card-back">
+                        <div class="card-text">
+                            <h2 class="card-title">Saint Francis</h2>
+                            <p style="margin-top: 30px;">
+                                Lord, make me an instrument of your peace:<br/>
+                                where there is hatred, let me sow love;<br/>
+                                where there is injury, pardon;<br/>
+                                where there is doubt, faith;<br/>
+                                where there is despair, hope;<br/>
+                                where there is darkness, light;<br/>
+                                where there is sadness, joy.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                O divine Master, grant that I may not so much seek<br/>
+                                to be consoled as to console,<br/>
+                                to be understood as to understand,<br/>
+                                to be loved as to love.<br/>
+                                For it is in giving that we receive,<br/>
+                                it is in pardoning that we are pardoned,<br/>
+                                and it is in dying that we are born to eternal life.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                Amen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="flipCard()" class="btn btn-primary" id="flip-btn">
+                    Flip Card
+                </button>
+                <a href="../index.html" class="btn btn-secondary">
+                    Back to Index
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple flip functionality - pure JavaScript
+        function flipCard() {
+            const card = document.getElementById('card');
+            const isFlipped = card.classList.contains('flipped');
+            const title = document.getElementById('card-title');
+            const infoButton = document.getElementById('info-btn');
+
+            // Toggle the flip
+            card.classList.toggle('flipped');
+
+            if (isFlipped) {
+                // Flipping back to front: delay showing title until halfway through animation
+                setTimeout(() => {
+                    title.classList.toggle('hidden');
+                    infoButton.classList.toggle('hidden');
+                }, 300); // 300ms = halfway through 600ms animation
+            } else {
+                // Flipping to back: hide title immediately
+                title.classList.toggle('hidden');
+                infoButton.classList.toggle('hidden');
+            }
+        }
+
+        // Info popup toggle
+        function toggleInfo(event) {
+            event.stopPropagation(); // Prevent card flip when clicking info
+            const popup = document.getElementById('info-popup');
+            popup.classList.toggle('visible');
+        }
+
+        // Optional: Allow clicking on card itself to flip
+        document.getElementById('card').addEventListener('click', flipCard);
+    </script>
+</body>
+</html>
