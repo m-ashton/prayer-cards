@@ -56,3 +56,7 @@ fastlane/test_output
 
 # Code Injection
 iOSInjectionProject/
+
+# Site images (add your own images here)
+site/images/*
+!site/images/.gitkeep

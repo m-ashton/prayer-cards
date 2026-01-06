@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Spirit - Holy Cards</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <!-- Front of card -->
+                    <div class="card-face card-front">
+                        <img src="../images/holy-spirit.jpg" alt="Holy Spirit" class="card-image"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <div class="card-icon" style="display: none; font-size: 8rem;">🕊️</div>
+                        <h2 class="card-title">Holy Spirit</h2>
+                    </div>
+
+                    <!-- Back of card -->
+                    <div class="card-face card-back">
+                        <div class="card-text">
+                            <h2 class="card-title">Holy Spirit</h2>
+                            <p style="margin-top: 30px;">
+                                The Holy Spirit, often symbolized by a dove, is the third person of the Holy Trinity, representing God's presence and power in the world.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                The Spirit guides, comforts, and empowers believers to live according to God's will.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="flipCard()" class="btn btn-primary" id="flip-btn">
+                    Flip Card
+                </button>
+                <a href="../index.html" class="btn btn-secondary">
+                    Back to Index
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard() {
+            const card = document.getElementById('card');
+            card.classList.toggle('flipped');
+        }
+
+        document.getElementById('card').addEventListener('click', flipCard);
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Place your card images here
+
+Images should be named to match your cards, for example:
+- sacred-cross.jpg
+- sacred-heart.jpg
+- holy-spirit.jpg
+
+The HTML pages reference these images. If an image is missing, the emoji icon will display instead.
