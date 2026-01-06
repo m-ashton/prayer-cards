@@ -16,6 +16,20 @@
                         <img src="../images/mary-queen.jpg" alt="Virgin and Child Enthroned" class="card-image"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <h2 class="card-title" id="card-title">Salve Regina</h2>
+
+                        <!-- Info button -->
+                        <button class="info-btn" id="info-btn" onclick="toggleInfo(event)">i</button>
+
+                        <!-- Info popup -->
+                        <div class="info-popup" id="info-popup" onclick="toggleInfo(event)">
+                            <div class="info-content" onclick="event.stopPropagation()">
+                                <button class="info-close" onclick="toggleInfo(event)">✕</button>
+                                <p><strong>Virgin and Child Enthroned</strong></p>
+                                <p>Painting by an unknown Bohemian painter</p>
+                                <p><a href="https://www.metmuseum.org/art/collection/search/838076" target="_blank" rel="noopener">View Source</a></p>
+                                <p class="info-license">Public domain</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Back of card -->
@@ -67,6 +81,7 @@
             const card = document.getElementById('card');
             const isFlipped = card.classList.contains('flipped');
             const title = document.getElementById('card-title');
+            const infoButton = document.getElementById('info-btn');
 
             // Toggle the flip
             card.classList.toggle('flipped');
@@ -74,12 +89,21 @@
             if (isFlipped) {
                 // Flipping back to front: delay showing title until halfway through animation
                 setTimeout(() => {
-                    title.hidden = false;
+                    title.classList.toggle('hidden');
+                    infoButton.classList.toggle('hidden');
                 }, 300); // 300ms = halfway through 600ms animation
             } else {
                 // Flipping to back: hide title immediately
-                title.hidden = true;
+                title.classList.toggle('hidden');
+                infoButton.classList.toggle('hidden');
             }
+        }
+
+        // Info popup toggle
+        function toggleInfo(event) {
+            event.stopPropagation(); // Prevent card flip when clicking info
+            const popup = document.getElementById('info-popup');
+            popup.classList.toggle('visible');
         }
 
         // Optional: Allow clicking on card itself to flip
