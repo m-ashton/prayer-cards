@@ -1,11 +1,11 @@
 # Prayer Cards - Static Website
 
-A simple, static website for displaying holy cards with flip animations. Each card has a front (image) and back (text) that users can flip between.
+A simple, static website for displaying prayer cards with flip animations. Each card has a front (image) and back (text) that users can flip between.
 
 ## Structure
 
 ```
-holy-cards/
+prayer-cards/
 ├── index.html              # Main page with list of all cards
 ├── README.md               # This file
 ├── css/
