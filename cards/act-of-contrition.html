@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Act of Contrition - Prayer Cards</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <!-- Front of card -->
+                    <div class="card-face card-front">
+                        <img src="../images/contrition.webp" alt="Manuscript Leaf with the Agony in the Garden and Betrayal of Christ, from a Royal Psalter" class="card-image"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <h2 class="card-title" id="card-title">Act of Contrition</h2>
+
+                        <!-- Info button -->
+                        <button class="info-btn" id="info-btn" onclick="toggleInfo(event)">i</button>
+
+                        <!-- Info popup -->
+                        <div class="info-popup" id="info-popup" onclick="toggleInfo(event)">
+                            <div class="info-content" onclick="event.stopPropagation()">
+                                <button class="info-close" onclick="toggleInfo(event)">✕</button>
+                                <p><strong>Manuscript Leaf with the Agony in the Garden and Betrayal of Christ, from a Royal Psalter</strong></p>
+                                <p>Artist unknown</p>
+                                <p><a href="https://www.metmuseum.org/art/collection/search/466371" target="_blank" rel="noopener">View Source</a></p>
+                                <p class="info-license">Public domain</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of card -->
+                    <div class="card-face card-back">
+                        <div class="card-text">
+                            <h2 class="card-title">Act of Contrition</h2>
+                            <p style="margin-top: 30px;">
+                                O my God,<br/>
+                                I am heartily sorry for having offended you,<br/>
+                                and I detest all my sins because of your just punishments,<br/>
+                                but most of all because they offend you, my God,<br/>
+                                who are all good and deserving of all my love.<br/>
+                                I firmly resolve, with the help of your grace,<br/>
+                                to sin no more<br/>
+                                and to avoid the near occasions of sin.<br/>
+                                Amen.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                <i>or:</i>
+                            </p>
+                            <p style="margin-top: 20px;">
+                                O my God,<br/>
+                                I am sorry and repent with all my heart<br/>
+                                for all the wrong I have done<br/>
+                                and for the good I have failed to do,<br/>
+                                because by sinning I have offended you,<br/>
+                                who are all good and worthy to be loved above all things.<br/>
+                                I firmly resolve, with the help of your grace,<br/>
+                                to do penance,<br/>
+                                to sin no more,<br/>
+                                and to avoid the occasions of sin.<br/>
+                                Through the merits of the Passion of our Savior Jesus Christ,<br/>
+                                Lord, have mercy.<br/>
+                                Amen.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                <i>or:</i>
+                            </p>
+                            <p style="margin-top: 20px;">
+                                Lord Jesus, Son of God,<br/>
+                                have mercy on me, a sinner.<br/>
+                                Amen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="flipCard()" class="btn btn-primary" id="flip-btn">
+                    Flip Card
+                </button>
+                <a href="../index.html" class="btn btn-secondary">
+                    Back to Index
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple flip functionality - pure JavaScript
+        function flipCard() {
+            const card = document.getElementById('card');
+            const isFlipped = card.classList.contains('flipped');
+            const title = document.getElementById('card-title');
+            const infoButton = document.getElementById('info-btn');
+
+            // Toggle the flip
+            card.classList.toggle('flipped');
+
+            if (isFlipped) {
+                // Flipping back to front: delay showing title until halfway through animation
+                setTimeout(() => {
+                    title.classList.toggle('hidden');
+                    infoButton.classList.toggle('hidden');
+                }, 300); // 300ms = halfway through 600ms animation
+            } else {
+                // Flipping to back: hide title immediately
+                title.classList.toggle('hidden');
+                infoButton.classList.toggle('hidden');
+            }
+        }
+
+        // Info popup toggle
+        function toggleInfo(event) {
+            event.stopPropagation(); // Prevent card flip when clicking info
+            const popup = document.getElementById('info-popup');
+            popup.classList.toggle('visible');
+        }
+
+        // Optional: Allow clicking on card itself to flip
+        document.getElementById('card').addEventListener('click', flipCard);
+    </script>
+</body>
+</html>
