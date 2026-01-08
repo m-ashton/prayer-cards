@@ -29,7 +29,7 @@
                                 <p>Photo by Jakub Hałun</p>
                                 <p><a href="https://commons.wikimedia.org/wiki/File:20190816_Archangel_Michael_sculpture,_St._Vitus_Cathedral,_1400_5302.jpg" target="_blank" rel="noopener">View Source</a></p>
                                 <p class="info-license">
-                                    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International</a>
+                                    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a>
                                 </p>
                             </div>
                         </div>
@@ -72,6 +72,7 @@
             const isFlipped = card.classList.contains('flipped');
             const title = document.getElementById('card-title');
             const infoButton = document.getElementById('info-btn');
+            const popup = document.getElementById('info-popup');
 
             // Toggle the flip
             card.classList.toggle('flipped');
@@ -85,6 +86,9 @@
             } else {
                 // Flipping to back: hide title immediately
                 title.classList.toggle('hidden');
+                if(popup.classList.contains('visible')){
+                    popup.classList.toggle('visible');
+                }
                 infoButton.classList.toggle('hidden');
             }
         }

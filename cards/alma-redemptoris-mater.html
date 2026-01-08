@@ -76,6 +76,7 @@
             const isFlipped = card.classList.contains('flipped');
             const title = document.getElementById('card-title');
             const infoButton = document.getElementById('info-btn');
+            const popup = document.getElementById('info-popup');
 
             // Toggle the flip
             card.classList.toggle('flipped');
@@ -89,6 +90,9 @@
             } else {
                 // Flipping to back: hide title immediately
                 title.classList.toggle('hidden');
+                if(popup.classList.contains('visible')){
+                    popup.classList.toggle('visible');
+                }
                 infoButton.classList.toggle('hidden');
             }
         }
