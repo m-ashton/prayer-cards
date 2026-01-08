@@ -11,8 +11,8 @@ prayer-cards/
 ├── css/
 │   └── styles.css         # All styles and animations
 ├── cards/
-│   ├── sacred-cross.html
-│   ├── sacred-heart.html
+│   ├── act-of-contrition.html
+│   ├── alma-redemptoris-mater.html
 │   └── ...                # One HTML file per card
 └── images/
     └── ...                # Card images (optional)
@@ -31,11 +31,10 @@ prayer-cards/
 ### Index Page (index.html)
 - Lists all cards in a grid
 - Each card links to its own page
-- Uses emoji icons as fallback if images aren't available
 
 ### Card Pages (cards/*.html)
 - Each card is a separate HTML file
-- Front shows an image (with emoji fallback)
+- Front shows an image
 - Back shows descriptive text
 - Click card or button to flip
 - "Back to Index" link returns to main page
@@ -48,17 +47,20 @@ prayer-cards/
 
 ## Adding New Cards
 
+Contributions are welcome via pull request.
+
 1. **Create a new HTML file** in `cards/` (e.g., `cards/my-card.html`)
-2. **Copy an existing card** as a template
-3. **Update the content**:
+2. **Add a web-optimized image**, preferably a webp as close as possible to 600px x 400px
+3. **Copy an existing card** as a template
+4. **Update the content**:
    - Change the title
-   - Update the image src (or keep emoji fallback)
+   - Update the image src
    - Modify the back text
-4. **Add to index.html**:
+5. **Add to index.html**:
    ```html
    <a href="cards/my-card.html" class="card-link">
        <div class="card-preview">
-           <div class="card-icon">🎯</div>
+           <img src="images/new-image.webp" alt="description of the image" class="card-image">
            <h2>My Card Title</h2>
        </div>
    </a>
@@ -66,75 +68,14 @@ prayer-cards/
 
 ## Adding Images
 
-1. Place images in the `images/` directory
-2. Reference them in card HTML: `<img src="../images/my-image.jpg" ...>`
-3. The `onerror` handler shows emoji if image is missing
+1. All images must be public domain or otherwise properly licensed
+2. Place images in the `images/` directory
+3. Reference them in card HTML: `<img src="../images/my-image.jpg" ...>`
+4. Update the `info-content` div with a description of the image, attribution, a link to the original source, and license info.
 
-## Hosting Options
+## Hosting
 
-### GitHub Pages (Free, Easy)
-1. Create a GitHub repository
-2. Push your repository to GitHub
-3. Go to Settings → Pages
-4. Select branch and root folder
-5. Your site will be live at `https://username.github.io/repo-name/`
-
-### Netlify (Free, Easy)
-1. Create account at netlify.com
-2. Drag and drop the entire project folder (or connect your GitHub repo)
-3. Site goes live immediately
-4. Custom domain supported
-
-### Vercel (Free, Easy)
-1. Create account at vercel.com
-2. Import from GitHub or upload folder
-3. Automatic deployments
-
-### Any Web Host
-- Upload the project contents via FTP (index.html, cards/, css/, images/)
-- Works with any web server (Apache, nginx, etc.)
-- No special server configuration needed
-
-## Testing Locally
-
-Open `index.html` directly in your browser. That's it! No server needed for local testing.
-
-## Browser Support
-
-Works in all modern browsers:
-- Chrome/Edge (last 2 versions)
-- Firefox (last 2 versions)
-- Safari (last 2 versions)
-- Mobile browsers
-
-## Customization
-
-### Colors
-Edit `css/styles.css`:
-- Background gradient: `body { background: ... }`
-- Button colors: `.btn-primary { background: ... }`
-
-### Card Size
-Edit `css/styles.css`:
-```css
-.card-wrapper {
-    width: 400px;    /* Change width */
-    height: 600px;   /* Change height */
-}
-```
-
-### Fonts
-Add Google Fonts in HTML `<head>`:
-```html
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-```
-
-Then update CSS:
-```css
-body {
-    font-family: 'Playfair Display', serif;
-}
-```
+The site is hosted using GitHub Pages at <a href="https://prayercards.online">https://prayercards.online</a>. Anything merged to `main` is automatically deployed.
 
 ## License
 
