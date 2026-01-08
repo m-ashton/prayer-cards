@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Peregrine- Prayer Cards</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <!-- Front of card -->
+                    <div class="card-face card-front">
+                        <img src="../images/st-peregrine.webp" alt="Peregrine, Patron Saint of Those Suffering From Life-Threatening Illness" class="card-image"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <h2 class="card-title" id="card-title">St. Peregrine</h2>
+
+                        <!-- Info button -->
+                        <button class="info-btn" id="info-btn" onclick="toggleInfo(event)">i</button>
+
+                        <!-- Info popup -->
+                        <div class="info-popup" id="info-popup" onclick="toggleInfo(event)">
+                            <div class="info-content" onclick="event.stopPropagation()">
+                                <button class="info-close" onclick="toggleInfo(event)">✕</button>
+                                <p><strong>Statue of St. Peregrine in the Serra Chapel at Mission San Juan Capistrano</strong></p>
+                                <p>Photo by <a href="https://www.flickr.com/photos/theaterculture/">theaterculture</a></p>
+                                <p><a href="https://www.flickr.com/photos/theaterculture/3885469100/" target="_blank" rel="noopener">View Source</a></p>
+                                <p class="info-license">
+                                    <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/deed.en">CC BY-NC-SA 2.0</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of card -->
+                    <div class="card-face card-back">
+                        <div class="card-text">
+                            <h2 class="card-title">St. Peregrine</h2>
+                            <p style="margin-top: 30px;">
+                                O great St. Peregrine, you have been called &ldquo;The Mighty,&rdquo; &ldquo;The Wonder-Worker,&rdquo; because of the numerous miracles which you have obtained from God for those who have had recourse to you. For so many years you bore in your own flesh this cancerous disease that destroys the very fiber of our being, and who had recourse to the source of all grace when the power of man could do no more. You were favored with the vision of Jesus coming down from His Cross to heal your affliction. Ask of God and Our Lady, the cure of the sick whom we entrust to you: <i>N.</i> and <i>N.</i>
+                            </p>
+                            <p style="margin-top: 20px;">
+                                Aided in this way by your powerful intercession, we shall sing to God, now and for all eternity, a song of gratitude for His great goodness and mercy.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                Amen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="flipCard()" class="btn btn-primary" id="flip-btn">
+                    Flip Card
+                </button>
+                <a href="../index.html" class="btn btn-secondary">
+                    Back to Index
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple flip functionality - pure JavaScript
+        function flipCard() {
+            const card = document.getElementById('card');
+            const isFlipped = card.classList.contains('flipped');
+            const title = document.getElementById('card-title');
+            const infoButton = document.getElementById('info-btn');
+
+            // Toggle the flip
+            card.classList.toggle('flipped');
+
+            if (isFlipped) {
+                // Flipping back to front: delay showing title until halfway through animation
+                setTimeout(() => {
+                    title.classList.toggle('hidden');
+                    infoButton.classList.toggle('hidden');
+                }, 300); // 300ms = halfway through 600ms animation
+            } else {
+                // Flipping to back: hide title immediately
+                title.classList.toggle('hidden');
+                infoButton.classList.toggle('hidden');
+            }
+        }
+
+        // Info popup toggle
+        function toggleInfo(event) {
+            event.stopPropagation(); // Prevent card flip when clicking info
+            const popup = document.getElementById('info-popup');
+            popup.classList.toggle('visible');
+        }
+
+        // Optional: Allow clicking on card itself to flip
+        document.getElementById('card').addEventListener('click', flipCard);
+    </script>
+</body>
+</html>
