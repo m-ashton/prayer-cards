@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorare - Prayer Cards</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <!-- Front of card -->
+                    <div class="card-face card-front">
+                        <img src="../images/virgin-and-child.webp" alt="Virgin and Child" class="card-image"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <h2 class="card-title" id="card-title">Memorare</h2>
+
+                        <!-- Info button -->
+                        <button class="info-btn" id="info-btn" onclick="toggleInfo(event)">i</button>
+
+                        <!-- Info popup -->
+                        <div class="info-popup" id="info-popup" onclick="toggleInfo(event)">
+                            <div class="info-content" onclick="event.stopPropagation()">
+                                <button class="info-close" onclick="toggleInfo(event)">✕</button>
+                                <p><strong>Virgin and Child</strong></p>
+                                <p>Workshop of Dieric Bouts</p>
+                                <p><a href="https://www.metmuseum.org/art/collection/search/435765" target="_blank" rel="noopener">View Source</a></p>
+                                <p class="info-license">Public domain</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of card -->
+                    <div class="card-face card-back">
+                        <div class="card-text">
+                            <h2 class="card-title">Memorare</h2>
+                            <p style="margin-top: 20px;">
+                                Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thy intercession, was left unaided.
+                            </p>
+
+                            <p style="margin-top: 10px;">
+                                Inspired by this confidence I fly unto thee, O Virgin of virgins, my Mother.
+                            </p>
+
+                            <p style="margin-top: 10px;">
+                                To thee do I come, before thee I stand, sinful and sorrowful.
+                            </p>
+
+                            <p>
+                                O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me.
+                            </p>
+
+                            <p style="margin-top: 10px;">
+                                Amen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="flipCard()" class="btn btn-primary" id="flip-btn">
+                    Flip Card
+                </button>
+                <a href="../index.html" class="btn btn-secondary">
+                    Back to Categories
+                </a>
+                <a href="../all-cards.html" class="btn btn-secondary">
+                    Back to All Cards
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple flip functionality - pure JavaScript
+        function flipCard() {
+            const card = document.getElementById('card');
+            const isFlipped = card.classList.contains('flipped');
+            const title = document.getElementById('card-title');
+            const infoButton = document.getElementById('info-btn');
+            const popup = document.getElementById('info-popup');
+
+            // Toggle the flip
+            card.classList.toggle('flipped');
+
+            if (isFlipped) {
+                // Flipping back to front: delay showing title until halfway through animation
+                setTimeout(() => {
+                    title.classList.toggle('hidden');
+                    infoButton.classList.toggle('hidden');
+                }, 300); // 300ms = halfway through 600ms animation
+            } else {
+                // Flipping to back: hide title immediately
+                title.classList.toggle('hidden');
+                if(popup.classList.contains('visible')){
+                    popup.classList.toggle('visible');
+                }
+                infoButton.classList.toggle('hidden');
+            }
+        }
+
+        // Info popup toggle
+        function toggleInfo(event) {
+            event.stopPropagation(); // Prevent card flip when clicking info
+            const popup = document.getElementById('info-popup');
+            popup.classList.toggle('visible');
+        }
+
+        // Optional: Allow clicking on card itself to flip
+        document.getElementById('card').addEventListener('click', flipCard);
+    </script>
+</body>
+</html>
