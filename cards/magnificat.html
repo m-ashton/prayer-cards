@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canticle of Mary - Prayer Cards</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "de8418cd18cd42de9dbcf1e71128b62d"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <!-- Front of card -->
+                    <div class="card-face card-front">
+                        <img src="../images/visitation.webp" alt="Stained Glass Panel with the Visitation" class="card-image"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <h2 class="card-title" id="card-title">Magnificat</h2>
+
+                        <!-- Info button -->
+                        <button class="info-btn" id="info-btn" onclick="toggleInfo(event)">i</button>
+
+                        <!-- Info popup -->
+                        <div class="info-popup" id="info-popup" onclick="toggleInfo(event)">
+                            <div class="info-content" onclick="event.stopPropagation()">
+                                <button class="info-close" onclick="toggleInfo(event)">✕</button>
+                                <p><strong>Stained Glass Panel with the Visitation</strong></p>
+                                <p>German</p>
+                                <p><a href="https://www.metmuseum.org/art/collection/search/463648" target="_blank" rel="noopener">View Source</a></p>
+                                <p class="info-license">Public domain</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of card -->
+                    <div class="card-face card-back">
+                        <div class="card-text">
+                            <h2 class="card-title">Magnificat</h2>
+                            <p style="margin-top: 30px;">
+                                My soul proclaims the greatness of the Lord,<br/>
+                                my spirit rejoices in God my Savior<br/>
+                                for he has looked with favor on his lowly servant.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                From this day all generations will call me blessed:<br/>
+                                the Almighty has done great things for me,<br/>
+                                and holy is his name.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                He has mercy on those who fear him in every generation.<br/>
+                            </p>
+                            <p style="margin-top: 20px;">
+                                He has shown the strength of his arm,<br/>
+                                he has scattered the proud in their conceit.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                He has cast down the mighty from their thrones,<br/>
+                                and has lifted up the lowly.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                He has filled the hungry with good things,<br/>
+                                and the rich he has sent away empty.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                He has come to the help of his servant Israel<br/>
+                                for he has remembered his promise of mercy,<br/>
+                                the promise he made to our fathers,<br/>
+                                to Abraham and his children forever.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                Amen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="flipCard()" class="btn btn-primary" id="flip-btn">
+                    Flip Card
+                </button>
+                <a href="../index.html" class="btn btn-secondary">
+                    Back to Categories
+                </a>
+                <a href="../all-cards.html" class="btn btn-secondary">
+                    Back to All Cards
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple flip functionality - pure JavaScript
+        function flipCard() {
+            const card = document.getElementById('card');
+            const isFlipped = card.classList.contains('flipped');
+            const title = document.getElementById('card-title');
+            const infoButton = document.getElementById('info-btn');
+            const popup = document.getElementById('info-popup');
+
+            // Toggle the flip
+            card.classList.toggle('flipped');
+
+            if (isFlipped) {
+                // Flipping back to front: delay showing title until halfway through animation
+                setTimeout(() => {
+                    title.classList.toggle('hidden');
+                    infoButton.classList.toggle('hidden');
+                }, 300); // 300ms = halfway through 600ms animation
+            } else {
+                // Flipping to back: hide title immediately
+                title.classList.toggle('hidden');
+                if(popup.classList.contains('visible')){
+                    popup.classList.toggle('visible');
+                }
+                infoButton.classList.toggle('hidden');
+            }
+        }
+
+        // Info popup toggle
+        function toggleInfo(event) {
+            event.stopPropagation(); // Prevent card flip when clicking info
+            const popup = document.getElementById('info-popup');
+            popup.classList.toggle('visible');
+        }
+
+        // Optional: Allow clicking on card itself to flip
+        document.getElementById('card').addEventListener('click', flipCard);
+    </script>
+</body>
+</html>
